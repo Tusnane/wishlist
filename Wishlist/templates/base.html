@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Мой вишлист{% endblock %}</title>
+<style>
+:root{--bg:#f7f5ff;--card:#fff;--text:#2b2540;--muted:#9a94b3;--accent:#7c5cff;--accent-d:#5b3fd6;--line:#e6e1fa}
+@media(prefers-color-scheme:dark){:root{--bg:#161320;--card:#221d33;--text:#efeaff;--muted:#8d86a8;--line:#352e4f}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1200px;margin:0 auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+h1{margin:0;font-size:24px}
+.muted{color:var(--muted);font-size:14px}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 14px;border-radius:10px;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{border-color:var(--accent)}
+.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.primary:hover{background:var(--accent-d)}
+input[type=text],input[type=password]{font:inherit;width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>✨ Мой вишлист</h1>
+  {% if user.is_authenticated %}
+  <form method="post" action="{% url 'logout' %}">{% csrf_token %}
+    <span class="muted">{{ user.username }}</span> <button>Выйти</button>
+  </form>
+  {% endif %}
+</header>
+{% block content %}{% endblock %}
+</div>
+</body>
+</html>
