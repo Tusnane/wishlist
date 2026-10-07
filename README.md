@@ -22,10 +22,3 @@ python manage.py runserver
 | 4. QA и тестирование | Анпилогов Максим
 | 5. Технический писатель и DevOps | Камков Никита
 
-## Структура
-```
-wishlist_django/   код (config, wishes, templates)
-docs/              руководство по запуску и деплою
-task_*/            документы по ролям
-.github/workflows/ автотесты (CI)
-```
